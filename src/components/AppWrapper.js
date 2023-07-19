@@ -4,6 +4,7 @@ import {
     collection, deleteDoc, doc, where, serverTimestamp, onSnapshot, query, orderBy, getDocs
 } from "firebase/firestore";
 import Cookies from "universal-cookie";
+import Data from "./Data.js"
 
 const cookies = new Cookies();
 const onlineusersRef = collection(db, "onlineusers");
@@ -27,7 +28,10 @@ export const AppWrapper = ({ children, isAuth, setIsAuth, setIsInChat }) => {
   return (
     <div className="App">
       <div className="app-header">
-        <h1> Chat App </h1>
+        <h1> CricRizz </h1>
+      </div>
+      <div className="scoreBoard">
+        <Data />
       </div>
 
       <div className="app-container">{children}</div>

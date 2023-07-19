@@ -12,13 +12,11 @@ import "./App.css";
 const cookies = new Cookies();
 const onlineusersRef = collection(db, "onlineusers");
 
-
 function ChatApp() {
   const [isAuth, setIsAuth] = useState(cookies.get("auth-token"));
   const [isInChat, setIsInChat] = useState(null);
   const [room, setRoom] = useState("");
   const [onlineUsers, setOnlineUsers] = useState([]);
-
 
   useEffect(() => {
     const queryUsers = query(
@@ -30,7 +28,7 @@ function ChatApp() {
         snapshot.forEach((doc) => {
             onlineUsers.push({ ...doc.data(), id: doc.id });
         });
-        console.log(onlineUsers);
+        
         setOnlineUsers(onlineUsers);
     });
 
@@ -74,7 +72,9 @@ function ChatApp() {
           </div>
         </>
       ) : (
-        <Chat room={room} />
+        // <div className="chatSpace">
+          <Chat room={room} />
+        // {/* </div> */}
       )}
     </AppWrapper>
   );
